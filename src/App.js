@@ -16,21 +16,27 @@ class 一营 extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      solders: ['虎子', '柱子', '王根生']
+      soldiers: ['虎子', '柱子', '王根生']
     }
   }
-  addSoldre = () => {
+  addSoldier = () => {
     this.setState({
-      solders: [...this.state.solders, '新兵蛋子'+Math.random()]
+      soldiers: [...this.state.soldiers, '新兵蛋子'+Math.random()]
+    })
+  }
+  reduceSoldier = (index) => {
+    this.state.soldiers.splice(index, 1)
+    this.setState({
+      soldiers: this.state.soldiers
     })
   }
   render() {
     return (
       <div>
         <h2>一营营长,{this.props.老大}</h2>
-        <button onClick={this.addSoldre}>新兵入伍</button>
+        <button onClick={this.addSoldier}>新兵入伍</button>
         <ul>
-          {this.state.solders.map((v) => <li key={v}>{v}</li>)}
+          {this.state.soldiers.map((v, index) => <li key={index} onClick={this.reduceSoldier.bind(this, index)}>{v}</li>)}
         </ul>
       </div>
     )
