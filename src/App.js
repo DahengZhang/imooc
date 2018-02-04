@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, List } from 'antd-mobile'
 
 class App extends Component {
   render () {
@@ -41,10 +42,14 @@ class 一营 extends React.Component{
     return (
       <div>
         <h2>一营营长,{this.props.老大}</h2>
-        <button onClick={this.addSoldier}>新兵入伍</button>
-        <ul>
-          {this.state.soldiers.map((v, index) => <li key={index}>{v} <a onClick={this.reduceSoldier.bind(this, index)}>牺牲</a></li>)}
-        </ul>
+        <Button type='primary' onClick={this.addSoldier}>新兵入伍</Button>
+        <List renderHeader={() => { '士兵列表' }}>
+          {this.state.soldiers.map((item, index) => {
+            return (
+              <List.Item key={index}>{item} <a onClick={this.reduceSoldier.bind(this, index)}>牺牲</a></List.Item>
+            )
+          })}
+        </List>
       </div>
     )
   }
