@@ -19,6 +19,12 @@ class 一营 extends React.Component{
       soldiers: ['虎子', '柱子', '王根生']
     }
   }
+  componentWillMount() {
+    console.log('组件马上就要加载了...')
+  }
+  componentDidMount() {
+    console.log('组件加载完毕!')
+  }
   addSoldier = () => {
     this.setState({
       soldiers: [...this.state.soldiers, '新兵蛋子'+Math.random()]
@@ -31,12 +37,13 @@ class 一营 extends React.Component{
     })
   }
   render() {
+    console.log('组件正在加载了...')
     return (
       <div>
         <h2>一营营长,{this.props.老大}</h2>
         <button onClick={this.addSoldier}>新兵入伍</button>
         <ul>
-          {this.state.soldiers.map((v, index) => <li key={index} onClick={this.reduceSoldier.bind(this, index)}>{v}</li>)}
+          {this.state.soldiers.map((v, index) => <li key={index}>{v} <a onClick={this.reduceSoldier.bind(this, index)}>牺牲</a></li>)}
         </ul>
       </div>
     )

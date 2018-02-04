@@ -1,7 +1,7 @@
 {
   "name": "imooc",
-  "version": "1.0.0",
-  "description": "渲染列表，简单操作列表",
+  "version": "1.1.0",
+  "description": "生命周期",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
